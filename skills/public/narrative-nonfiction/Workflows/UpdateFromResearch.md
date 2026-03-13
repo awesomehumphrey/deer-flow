@@ -305,7 +305,7 @@ Based on the update, recommend the author's next step:
 
 - If a chapter is now well-supported and undrafted → **WriteChapter**
 - If a drafted chapter needs significant revision → **Revise** workflow
-- If new research gaps were identified → **deep-research** skill for targeted web research
+- If new research gaps were identified → **deep-research** skill for targeted web research, or external literature review to fill gaps beyond the local materials
 - If structural changes are pending → Author review and decision
 - If more materials are expected → Wait, then re-run **IngestResearch**
 
@@ -326,4 +326,4 @@ This workflow is designed to be run multiple times as research accumulates:
 2. Subsequent runs: Incrementally updates the Bible and drafts as new materials are added
 3. Each run produces a dated update summary for the author to track the book's evolution
 
-The Research Digest and Update Summaries together form a log of how the book's evidence base grew over time, which itself can inform the author's intellectual journey narrative.
+The Research Digest and Update Summaries together form a log of how the book's evidence base grew over time, which itself can inform the intellectual journey narrative. Note that this evidence base includes both local materials and external sources discovered through web research and literature review.
