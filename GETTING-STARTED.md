@@ -97,23 +97,31 @@ To stop everything: press `Ctrl+C` in the terminal, or run `make stop` from anot
 
 ### Choosing a Mode
 
-The chat input bar has mode options. Use:
+Each mode adds capabilities on top of the previous one. The trade-off is speed vs. depth.
 
-| Mode | Best for | What it enables |
-|------|----------|-----------------|
-| **Flash** | Quick questions, lookups | Minimal reasoning |
-| **Thinking** | Interview, brainstorming, exploring ideas | Extended reasoning |
-| **Pro** | BuildBible, WriteChapter, IngestResearch | Planning with task tracking |
-| **Ultra** | UpdateFromResearch, multi-chapter work | Planning + parallel sub-agents |
+| Mode | What it enables | When to use it |
+|------|-----------------|----------------|
+| **Flash** | Direct responses, no extended reasoning | Quick lookups: "What's in the drafts folder?" |
+| **Thinking** | Extended reasoning (chain-of-thought) | Conversational work: Interview, light Explore sessions |
+| **Pro** | Thinking + structured task tracking (todo lists) | Multi-step workflows: IngestResearch, BuildBible, WriteChapter, deep Explore, medium Revise |
+| **Ultra** | Pro + parallel sub-agents (delegates work) | Work spanning multiple chapters: UpdateFromResearch, heavy Revise across chapters |
+
+**Why it matters:**
+
+- **Pro** gives the agent a todo list it can use to track progress through complex workflows. Without this (in Thinking mode), the agent may lose track of where it is in a 9-step process like WriteChapter.
+- **Ultra** lets the agent spawn parallel sub-agents to do work simultaneously. This is valuable when assessing the impact of new research across all chapters at once (UpdateFromResearch), but overkill for sequential work like writing a single chapter.
+- **Thinking** is enough for conversational workflows (Interview, quick explorations) where the agent does not need to track multi-step progress.
+
+Each phase below specifies which mode to use.
 
 ### Choosing a Model
 
-Both models are available in the model selector:
+| Model | Strengths | Best for |
+|-------|-----------|----------|
+| **Claude Sonnet 4.6** | Faster, cheaper | Research ingestion, outlines, iteration, light Revise |
+| **Claude Opus 4.6** | Deeper reasoning, better prose | Writing chapters, building the bible, complex analysis, Interview, Explore |
 
-| Model | Best for |
-|-------|----------|
-| **Claude Sonnet 4.6** | Faster responses; good for research ingestion, outlines, iteration |
-| **Claude Opus 4.6** | Deeper reasoning; best for writing prose, building the bible, complex analysis |
+When in doubt, use Opus. Use Sonnet when speed matters more than depth (e.g., processing a large batch of documents).
 
 ## Part 3: The Book Writing Workflow
 
@@ -143,7 +151,7 @@ These folders are automatically available inside DeerFlow's sandbox at `/mnt/Val
 
 ### Phase 2: Ingest and Analyse the Research
 
-Start a **new chat** in DeerFlow. Select **Pro** mode and **Claude Opus 4.6**.
+Start a **new chat** in DeerFlow. Select **Pro** mode and **Claude Opus 4.6**. (Pro because ingestion is a multi-step process that benefits from task tracking. Opus for careful reading. If you have a very large document set, Sonnet is faster.)
 
 Type:
 
@@ -163,6 +171,8 @@ The agent will pause after inventorying files to confirm which ones to process. 
 This is the foundation for everything that follows. The chapter structure, the evidence base, and the argument of the book all emerge from the actual research, not from guesses. The Research Digest will also identify evidence gaps, which the agent addresses through web research and external literature review in later phases.
 
 ### Phase 3: Interview
+
+Switch to **Thinking** mode, **Claude Opus 4.6**. (The interview is conversational; no task tracking needed. Opus gives deeper, more insightful questions.)
 
 In the **same chat thread**, type:
 
@@ -184,6 +194,8 @@ Because the research has already been ingested, the agent can ask specific quest
 **Output:** A structured interview document capturing your vision across all 7 narrative layers.
 
 ### Phase 4: Explore (Optional)
+
+Use **Thinking** mode and **Claude Opus 4.6** for quick explorations. Switch to **Pro** if the exploration is deep and multi-faceted (the task tracking helps the agent keep its thread of reasoning organised).
 
 After the interview, you may want to think through specific ideas, connections, or questions before building the Bible. Type something like:
 
@@ -209,6 +221,8 @@ Explore is useful at any point in the process, not just here. Use it between cha
 
 ### Phase 5: Build the Book Bible
 
+Switch to **Pro** mode, **Claude Opus 4.6**. (Building the bible is an 11-step process; task tracking keeps it on track. Opus gives the depth needed for intellectual journey architecture and mystery design.)
+
 Still in the **same chat thread**, type:
 
 > Build the book bible for Human Values in Software based on our interview and the research digest.
@@ -228,6 +242,8 @@ This replaces the provisional chapter scaffold in the skill file. The chapter st
 **Output:** A Book Bible PRD document. This is the living reference for all writing.
 
 ### Phase 6: Write Chapters
+
+Use **Pro** mode, **Claude Opus 4.6**. (WriteChapter is a 9-step process with evidence planning, layer articulation, composition, and 5 critic passes. Task tracking is essential. Opus writes the best prose.)
 
 Now write, one chapter at a time. Type:
 
@@ -257,6 +273,8 @@ For high-stakes chapters (opening, midpoint, climactic), the agent also runs 3 o
 
 ### Phase 7: Add More Materials and Update
 
+Switch to **Ultra** mode, **Claude Opus 4.6**. (UpdateFromResearch needs to assess impact across all chapters simultaneously. Ultra's parallel sub-agents can evaluate multiple chapters at once rather than working through them one by one.)
+
 As your research continues, add new documents to the `~/Documents/ValuesWork/` folders. Then type:
 
 > I have added new papers. Process them and update the book.
@@ -276,6 +294,8 @@ The agent will:
 - Assess whether the book structure itself needs changes (new chapters, merges, splits, reordering)
 
 ### Phase 8: Revise
+
+Use **Pro** mode, **Claude Opus 4.6** for most revisions. For light prose polish, **Thinking** mode with **Sonnet** is faster and sufficient. For heavy revisions spanning multiple chapters, consider **Ultra**.
 
 To revise an existing chapter based on critic feedback, a revision brief, or new research:
 
