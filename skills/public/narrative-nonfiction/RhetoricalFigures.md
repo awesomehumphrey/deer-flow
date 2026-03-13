@@ -1,0 +1,1 @@
+/Users/int21h/Documents/GitHub/deer-flow/.agents/skills/writestory/RhetoricalFigures.md

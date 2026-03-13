@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "WriteStory": {
+      "source": "danielmiessler/personal_ai_infrastructure",
+      "sourceType": "github",
+      "computedHash": "fb6976da53eb5cb50024ebcf04719f1e9236490784a69fb53a3b2faadae166a0"
+    }
+  }
+}
