@@ -373,14 +373,16 @@ Provides **book-specific context** that the agent uses to understand your projec
 - Author biography, research focus, and personal anecdotes
 - Core thesis and terminology
 - Target audience
+- Aesthetic profile selection (60% Zuboff + 40% Christian)
+- The seven narrative layers (summary and link to full definitions)
 - Provisional chapter structure (to be rebuilt from research)
 - Known publications, grants, and key reading highlights
 - British English and no-em-dashes rules
-- Research directory paths
+- Research directory paths and scope clarification
 
 ### narrative-nonfiction
 
-Provides the **writing methodology** with 14 files:
+Provides the **writing methodology** with 13 files:
 
 | File | Purpose |
 |------|---------|
@@ -397,6 +399,6 @@ Provides the **writing methodology** with 14 files:
 | `Workflows/BuildBible.md` | Create the book plan |
 | `Workflows/IngestResearch.md` | Analyse research materials into a structured digest |
 | `Workflows/UpdateFromResearch.md` | Update the bible and chapters from new research |
-| `Workflows/WriteChapter.md` | Transform plan into prose |
+| `Workflows/WriteChapter.md` | Transform plan into prose (also handles revision) |
 
 The agent loads these files progressively as needed. You do not need to reference them directly; the agent reads them when your message matches the workflow triggers.

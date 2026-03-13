@@ -15,9 +15,9 @@ Route to the appropriate workflow based on the request.
 
 | Workflow | Trigger | File |
 | --- | --- | --- |
+| **IngestResearch** | "analyse the research", "ingest documents", "read the papers", "scan my materials" | `Workflows/IngestResearch.md` |
 | **Interview** | "interview me", "extract my ideas", "help me plan the book" | `Workflows/Interview.md` |
 | **BuildBible** | "build book plan", "create book bible", "map the chapters" | `Workflows/BuildBible.md` |
-| **IngestResearch** | "analyse the research", "ingest documents", "read the papers", "scan my materials" | `Workflows/IngestResearch.md` |
 | **UpdateFromResearch** | "update the book from research", "revise bible from materials", "incorporate research", "sync book with research" | `Workflows/UpdateFromResearch.md` |
 | **Explore** | "explore ideas", "brainstorm", "what if", "find angles" | `Workflows/Explore.md` |
 | **WriteChapter** | "write chapter", "draft", "write prose" | `Workflows/WriteChapter.md` |
