@@ -39,14 +39,15 @@ These are real experiences to draw on for narrative hooks and chapter openings:
 
 ## CV / Bio
 
-Include author's CV and biographical information from `/mnt/ValuesWork/bio/` when writing author notes, preface, or back matter. Frame the research journey as a narrative arc throughout the book.
+Include your CV and biographical information from `/mnt/ValuesWork/bio/` when writing author notes, preface, or back matter. Frame your research journey as a narrative arc throughout the book.
 
 ## Source Materials Location
 
-All research materials are mounted at `/mnt/ValuesWork/`:
+Your personal research materials are mounted at `/mnt/ValuesWork/`. This folder provides the grounding for the book: your own publications, interviews, grants, reading highlights, and lived experience. It is NOT the limit of the book's research scope. The agent should also conduct web research, search academic literature, cite external works, and draw on any sources appropriate to a serious academic trade book. Think of ValuesWork as the personal foundation; the broader intellectual landscape is built on top of it.
+
 ```
 /mnt/ValuesWork/
-├── papers/       ← Academic papers, your publications, OVIS lab papers
+├── papers/       ← Your publications, OVIS lab papers, cited works
 ├── interviews/   ← Developer interviews, user studies
 ├── notes/        ← Research notes, ideas
 ├── data/         ← Datasets, analysis results
@@ -69,6 +70,8 @@ Software systems routinely violate human values — values that are deeply human
 - Academics in adjacent fields
 
 ### Proposed Chapters
+
+> **PROVISIONAL:** The chapter structure below is a rough scaffold based on paper titles and early conversations. It has NOT been validated against the actual research materials. Once the research documents are added to `/mnt/ValuesWork/` and analysed via the IngestResearch workflow, this entire section should be **rebuilt from the evidence**. The BuildBible and UpdateFromResearch workflows will replace this scaffold with a proper, research-grounded chapter map across all 7 narrative layers.
 
 **Introduction**
 - Frame the book's purpose and personal narrative
@@ -130,15 +133,28 @@ Software systems routinely violate human values — values that are deeply human
 
 ## Chapter Writing Workflow
 
-When asked to write a chapter:
+The recommended sequence for writing this book:
 
-1. **Read relevant sources** from `/mnt/ValuesWork/papers/` and `/mnt/ValuesWork/notes/`
-2. **Load complementary skills**: `narrative-nonfiction`, `deep-research`, `writing-skills`, `doc-coauthoring`
-3. **Draft to** `/mnt/ValuesWork/drafts/chapter-XX-title.md`
-4. **Include**: Opening scene, research narrative, technical explanation, human stories, implications
-5. **End with**: Transition to next chapter's themes
+1. **Add research materials** to `/mnt/ValuesWork/` subdirectories
+2. **Ingest and analyse** — run IngestResearch to produce a Research Digest
+3. **Interview** — extract the author's vision, thesis, and narrative priorities
+4. **Build Bible** — create the full chapter map grounded in the actual research evidence (this replaces the provisional chapter scaffold above)
+5. **Write chapters** — draft prose following the Book Bible
+6. **Iterate** — add more materials, re-ingest, update the bible and drafts
+
+When writing a chapter:
+
+1. **Check the Research Digest** for evidence mapped to this chapter
+2. **Read relevant sources** from `/mnt/ValuesWork/papers/` and `/mnt/ValuesWork/notes/`
+3. **Search for external sources** — use web search and literature review to fill gaps identified in the Research Digest; the book's evidence base extends well beyond ValuesWork
+4. **Load complementary skills**: `narrative-nonfiction`, `deep-research`, `writing-skills`, `doc-coauthoring`
+5. **Draft to** `/mnt/ValuesWork/drafts/chapter-XX-title.md`
+6. **Include**: Opening scene, research narrative, technical explanation, human stories, implications
+7. **End with**: Transition to next chapter's themes
 
 ## Key Research to Reference
+
+> **Note:** The specific publications listed below are known references from early conversations. The full list of sources will be determined by the IngestResearch workflow after all materials are added to `/mnt/ValuesWork/`. The Research Digest will provide the authoritative mapping of sources to chapters.
 
 ### Dr. Obie's Publications (cite throughout)
 - "Automated detection, categorisation and developers' experience with violations of honesty in mobile apps" (Empirical Software Engineering, 2023)

@@ -2,6 +2,10 @@
 
 Scan research material directories, read and analyse documents, extract key findings, and produce a structured Research Digest that maps evidence to book chapters. This is the bridge between raw materials and the writing process.
 
+## Scope
+
+The research directories (e.g. `/mnt/ValuesWork/`) contain the author's personal grounding materials: their own publications, grants, interviews, reading highlights, and lived experience. This workflow ingests those materials and identifies what evidence is available and what is missing. Gaps identified here should drive **external research** (web search, academic literature review, broader source discovery) in subsequent workflows. The book's evidence base extends well beyond what is stored locally.
+
 ## Prerequisites
 
 - Book-specific skill loaded (e.g., `human-values-book`) with research directory paths defined
@@ -255,6 +259,8 @@ New sources since last digest: [N]
 ## Gaps Requiring Additional Research
 1. [Gap description] → Suggested search: [search terms or source types]
 2. ...
+
+Use the `deep-research` skill or web search to fill these gaps. The local materials are the foundation, not the ceiling.
 ```
 
 ### Step 6: Present and Confirm

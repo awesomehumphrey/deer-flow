@@ -10,7 +10,7 @@ This is the entry point for authors who have a subject, research, or ideas rangi
 
 ### Step 1: Consume Available Input
 
-If the author has provided content (existing drafts, research notes, paper outlines, interview transcripts, datasets), read ALL of it first.
+If the author has provided content (existing drafts, research notes, paper outlines, interview transcripts, datasets), read ALL of it first. Also consider relevant external literature and context that may inform the interview questions.
 
 Extract and categorise everything into the seven layers:
 

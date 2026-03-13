@@ -36,7 +36,7 @@ Before writing, plan the evidence for this chapter:
 2. **Supporting evidence:** What secondary evidence supports the primary evidence?
 3. **Source attribution:** Are all sources specifically attributed?
 4. **Counter-evidence:** What alternative perspectives or counter-arguments does this chapter address?
-5. **Gaps:** What evidence is missing that the reader might expect?
+5. **Gaps:** What evidence is missing that the reader might expect? For gaps, conduct web research and literature searches to find external sources; the evidence base is not limited to materials the author has provided locally.
 6. **Bibliography check:** Verify every planned source has a BibTeX entry in `references.bib`. Add any missing entries now, before writing begins. See `Bibliography.md` for conventions.
 
 #### Rhetorical Figure Strategy
