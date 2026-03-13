@@ -194,6 +194,9 @@ When writing chapters, save as Markdown:
 
 ## Quick Commands
 
+- "Analyse the research materials" → Scan `/mnt/ValuesWork/`, read all documents, produce a Research Digest mapping evidence to chapters
+- "Update the book from the research" → Take the Research Digest and update the Book Bible and existing chapter drafts
+- "I've added new papers, process them" → Incrementally ingest only new/changed files and update the digest
 - "Write Chapter 1 outline" → Produce detailed outline with sources needed
 - "Draft Chapter 1 opening" → Write the hook/opening scene
 - "Integrate [paper] into Chapter X" → Weave research into narrative
