@@ -211,16 +211,13 @@ STRUCTURAL CHANGES:
 
 #### 4b: Apply Revisions (if requested)
 
-If the author approves the revision brief, apply the changes:
+If the author approves the revision brief, apply the changes using the **Revise** workflow:
 
-1. Read the existing chapter draft
-2. Apply additions, revisions, and removals from the brief
-3. Run the Anti-Cliche sweep on new/changed passages
-4. Run the Evidence Inspector critic pass on the revised sections
-5. Update the chapter's reference list
-6. Save the updated draft
+1. Hand off the revision brief to the **Revise** workflow with the existing draft
+2. Revise reads the draft, plans the changes, and applies them with scoped critic passes
+3. This is more efficient than running the full WriteChapter process for targeted changes
 
-If the author prefers to revise manually, save the revision brief alongside the draft:
+Alternatively, if the author prefers to revise manually, save the revision brief alongside the draft:
 
 ```
 /mnt/ValuesWork/drafts/chapter-01-dark-patterns.md           # existing draft
@@ -303,11 +300,12 @@ Save to `/mnt/ValuesWork/notes/update-summary-[date].md`.
 
 Based on the update, recommend the author's next step:
 
-- If a chapter is now well-supported and undrafted → **WriteChapter**
-- If a drafted chapter needs significant revision → **Revise** workflow
-- If new research gaps were identified → **deep-research** skill for targeted web research, or external literature review to fill gaps beyond the local materials
-- If structural changes are pending → Author review and decision
-- If more materials are expected → Wait, then re-run **IngestResearch**
+- If a chapter is now well-supported and undrafted --> **WriteChapter**
+- If a drafted chapter needs targeted revision --> **Revise** with the revision brief as input
+- If the update raised questions worth thinking through --> **Explore** to follow the intellectual thread before committing to changes
+- If new research gaps were identified --> **deep-research** skill for targeted web research, or external literature review to fill gaps beyond the local materials
+- If structural changes are pending --> Author review and decision
+- If more materials are expected --> Wait, then re-run **IngestResearch**
 
 ## Handling Conflicts
 

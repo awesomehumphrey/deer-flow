@@ -56,7 +56,7 @@ Two custom skills power the book writing:
 
 ```
 skills/public/human-values-book/SKILL.md     # Book-specific context
-skills/public/narrative-nonfiction/           # Writing methodology (14 files)
+skills/public/narrative-nonfiction/           # Writing methodology (16 files)
 ```
 
 Both are in `skills/public/` and enabled by default. You can confirm in the DeerFlow UI under Settings > Skills after starting the server.
@@ -117,7 +117,7 @@ Both models are available in the model selector:
 
 ## Part 3: The Book Writing Workflow
 
-The workflow has seven phases. The first time through, follow them in order. After that, you will iterate between phases 3-7 as you add materials and write chapters.
+The workflow has nine phases. The first time through, follow them in order (skipping optional phases if you prefer). After that, you will iterate between phases as you add materials, explore ideas, and write chapters.
 
 ### Phase 1: Gather Research Materials
 
@@ -183,7 +183,31 @@ Because the research has already been ingested, the agent can ask specific quest
 
 **Output:** A structured interview document capturing your vision across all 7 narrative layers.
 
-### Phase 4: Build the Book Bible
+### Phase 4: Explore (Optional)
+
+After the interview, you may want to think through specific ideas, connections, or questions before building the Bible. Type something like:
+
+> Explore the connection between dark patterns and security vulnerabilities.
+
+Or:
+
+> What if software values alignment and AI alignment share a common root problem?
+
+The agent reads `Workflows/Explore.md` and follows the intellectual thread:
+
+1. Frames the question and gathers relevant context from the Research Digest and interview
+2. Follows the thread through evidence, counter-arguments, and implications
+3. Surfaces surprises and unexpected connections
+4. Assesses what the exploration means for the book's argument and structure
+5. Produces exploration notes with findings, implications, and suggested next steps
+
+Exploration is deliberately open-ended. It is the divergent thinking space — testing ideas before committing to a plan. You can run multiple Explore sessions on different questions.
+
+**Output:** Exploration notes saved to `/mnt/ValuesWork/notes/exploration-[slug].md`. Includes findings, surprises, implications for the book, and new questions raised.
+
+Explore is useful at any point in the process, not just here. Use it between chapters, after ingesting new research, or when you are stuck.
+
+### Phase 5: Build the Book Bible
 
 Still in the **same chat thread**, type:
 
@@ -203,7 +227,7 @@ This replaces the provisional chapter scaffold in the skill file. The chapter st
 
 **Output:** A Book Bible PRD document. This is the living reference for all writing.
 
-### Phase 5: Write Chapters
+### Phase 6: Write Chapters
 
 Now write, one chapter at a time. Type:
 
@@ -231,7 +255,7 @@ The agent reads `Workflows/WriteChapter.md` and:
 
 For high-stakes chapters (opening, midpoint, climactic), the agent also runs 3 optional critics: Subtext Analyst, Continuity Editor, and Pacing Surgeon.
 
-### Phase 6: Add More Materials and Update
+### Phase 7: Add More Materials and Update
 
 As your research continues, add new documents to the `~/Documents/ValuesWork/` folders. Then type:
 
@@ -251,9 +275,9 @@ The agent will:
 - Flag any contradictions between new evidence and existing content for your decision
 - Assess whether the book structure itself needs changes (new chapters, merges, splits, reordering)
 
-### Phase 7: Revise
+### Phase 8: Revise
 
-To revise an existing chapter based on critic feedback or new research:
+To revise an existing chapter based on critic feedback, a revision brief, or new research:
 
 > Revise chapter 1 based on the critic feedback.
 
@@ -261,7 +285,24 @@ Or more targeted:
 
 > Integrate the new OVIS lab paper on transparency into chapter 4.
 
-The Revise workflow applies changes from revision briefs, runs the anti-cliche sweep and critic passes on changed sections, and updates the chapter's reference list.
+Or for prose polish:
+
+> Polish the prose in chapter 2, section 3.
+
+The agent reads `Workflows/Revise.md` and applies targeted changes:
+
+1. Identifies the revision input (critic feedback, revision brief, author directive, new evidence, or consistency fix)
+2. Reads the existing draft and identifies what needs to change
+3. Plans the changes explicitly before making them
+4. Applies additions, revisions, removals, and restructuring as needed
+5. Runs the anti-cliche sweep on new or changed text only
+6. Runs scoped critic passes targeted to the type of revision (not the full 5-8 pass sequence)
+7. Updates the chapter's layer summary, references, and critic scores
+8. Saves the revised draft
+
+The Revise workflow is lighter than WriteChapter because it works with what exists rather than building from scratch. It runs only the critic passes relevant to the revision type, and only on changed sections.
+
+**When to use Revise vs. WriteChapter:** Use Revise for targeted changes to an existing draft. Use WriteChapter only when a chapter needs to be fundamentally rewritten from the ground up (e.g., the core argument has changed). If a revision escalates beyond 8-10 individual changes, the agent will flag this and recommend switching to WriteChapter.
 
 ## Part 4: The Iterative Loop
 
@@ -274,11 +315,17 @@ Add documents to ~/Documents/ValuesWork/
 "Analyse the new materials"          --> IngestResearch (incremental)
         |
         v
+"Explore [question or connection]"   --> Explore (optional, but valuable)
+        |
+        v
 "Update the book from the research"  --> UpdateFromResearch
         |                                 (updates bible + revision briefs)
         v
-"Write chapter N"                    --> WriteChapter
-        |                                 (uses updated bible + evidence)
+"Write chapter N" / "Revise chapter N"
+        |
+        |-- New chapter?   --> WriteChapter (initial composition)
+        |-- Existing draft? --> Revise (targeted changes from revision briefs)
+        |
         v
 Add more documents, repeat
 ```
@@ -287,8 +334,10 @@ Each cycle:
 
 - New evidence is ingested incrementally (only new or changed files)
 - The Book Bible evolves with each update (versioned, with a change log)
-- Drafted chapters get targeted revision briefs, not full rewrites
-- The Research Digest and Update Summaries form a record of how the book's evidence base grew over time
+- Exploration sessions between ingestion and writing help the author think through implications before committing to changes
+- New chapters are written with WriteChapter (full composition from the Bible)
+- Existing chapters get targeted revision through Revise (not full rewrites)
+- The Research Digest, Exploration Notes, and Update Summaries form a record of how the book's evidence base and argument grew over time
 
 ## Part 5: Quick Command Reference
 
@@ -297,15 +346,17 @@ Each cycle:
 | Analyse all research materials | "Analyse the research materials in the ValuesWork folder" |
 | Process only new files | "I have added new papers, process them" |
 | Plan the book (interview) | "Interview me about my book Human Values in Software" |
+| Explore an idea or connection | "Explore the connection between dark patterns and security vulnerabilities" |
+| Think through implications | "What if software values alignment and AI alignment share a common root?" |
 | Create the master plan | "Build the book bible based on our interview and the research digest" |
 | Update plan from new research | "Update the book from the research" |
 | Write a chapter | "Write chapter 3 following the book bible" |
 | Write just the opening | "Draft the opening scene for chapter 1" |
 | Revise a chapter | "Revise chapter 1 based on the critic feedback" |
 | Integrate a specific paper | "Integrate the AIware 2025 paper into chapter 7" |
-| Explore an idea | "Explore the connection between dark patterns and security vulnerabilities" |
+| Polish prose | "Polish the prose in chapter 2, section 3" |
+| Apply a revision brief | "Apply the revision brief for chapter 4" |
 | Check consistency | "Review the draft of chapter 2 for consistency with the book bible" |
-| Brainstorm examples | "Suggest concrete examples for the inclusion gap chapter" |
 
 ## Part 6: Practical Tips
 
@@ -321,6 +372,7 @@ Each cycle:
 |------|--------------------------|
 | Chapter drafts | `~/Documents/ValuesWork/drafts/` |
 | Research Digest | `~/Documents/ValuesWork/notes/research-digest.md` |
+| Exploration notes | `~/Documents/ValuesWork/notes/exploration-[slug].md` |
 | Update summaries | `~/Documents/ValuesWork/notes/update-summary-[date].md` |
 | Master bibliography | `~/Documents/ValuesWork/references.bib` |
 | Book Bible | Agent workspace (also ask the agent to save a copy to `~/Documents/ValuesWork/notes/`) |
@@ -382,7 +434,7 @@ Provides **book-specific context** that the agent uses to understand your projec
 
 ### narrative-nonfiction
 
-Provides the **writing methodology** with 13 files:
+Provides the **writing methodology** with 16 files:
 
 | File | Purpose |
 |------|---------|
@@ -395,10 +447,12 @@ Provides the **writing methodology** with 13 files:
 | `Critics.md` | Multi-pass review system (8 critic profiles) |
 | `RhetoricalFigures.md` | 125 rhetorical figures catalogue |
 | `Bibliography.md` | BibTeX conventions, citation style, reference workflow |
-| `Workflows/Interview.md` | Extract author vision |
-| `Workflows/BuildBible.md` | Create the book plan |
 | `Workflows/IngestResearch.md` | Analyse research materials into a structured digest |
+| `Workflows/Interview.md` | Extract author vision |
+| `Workflows/Explore.md` | Follow intellectual threads, test ideas, discover connections |
+| `Workflows/BuildBible.md` | Create the book plan |
 | `Workflows/UpdateFromResearch.md` | Update the bible and chapters from new research |
-| `Workflows/WriteChapter.md` | Transform plan into prose (also handles revision) |
+| `Workflows/WriteChapter.md` | Initial composition: transform plan into prose |
+| `Workflows/Revise.md` | Targeted revision of existing chapter drafts |
 
 The agent loads these files progressively as needed. You do not need to reference them directly; the agent reads them when your message matches the workflow triggers.

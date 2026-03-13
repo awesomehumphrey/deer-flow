@@ -1,10 +1,13 @@
 # WriteChapter Workflow
 
-Transform Book Bible chapter plans into actual prose. This is where all seven layers converge into the written chapter. Every paragraph must serve at least one layer. Memorable lines are engineered using rhetorical figures. The Anti-Cliché filter ensures freshness. Multi-pass critics tighten the final draft.
+Transform Book Bible chapter plans into actual prose. This is the initial composition workflow: building a chapter from the plan when no draft yet exists. All seven layers converge into the written chapter. Every paragraph must serve at least one layer. Memorable lines are engineered using rhetorical figures. The Anti-Cliche filter ensures freshness. Multi-pass critics tighten the first draft.
+
+**Scope:** This workflow is for **initial composition** — writing a chapter for the first time. For targeted changes to an existing draft (critic feedback, new evidence, revision briefs, prose polish), use the **Revise** workflow instead. If a revision escalates to a fundamental rewrite where the chapter's core argument is changing, return to this workflow.
 
 ## Prerequisites
 
 - Book Bible exists (from BuildBible workflow)
+- **No existing draft** for the target chapter (if a draft exists, use Revise)
 - Read `RhetoricalFigures.md`: the toolbelt for this workflow
 - Read `AntiCliche.md`: mandatory freshness enforcement
 - Read `AestheticProfiles.md`: the configured style guide
@@ -204,8 +207,14 @@ Present the written chapter with:
 4. Any Book Bible updates needed (if writing revealed new connections)
 5. **References used:** List all citation keys used in this chapter with a brief note on their role (see `Bibliography.md` for the chapter-level reference tracking format)
 6. **New BibTeX entries:** Any entries added to `references.bib` during this chapter's writing
-7. Recommendation for what to write next
+7. Recommendation for what to do next
 8. Updated verification criteria (mark completed criteria)
+
+**Next step recommendations:**
+- If any critic gave a 1-2 confidence rating --> recommend a targeted **Revise** pass to address that dimension
+- If writing revealed new connections or questions --> recommend **Explore** to follow the thread before moving on
+- If all critics rate 3+ --> recommend writing the next chapter or moving to **Revise** for polish
+- If the chapter exposed evidence gaps --> recommend **deep-research** or adding materials and re-running **IngestResearch**
 
 ### Chapter Length Guidelines
 

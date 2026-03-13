@@ -179,8 +179,8 @@ Create a structured summary organised by layer:
 
 Output the structured summary and recommend next step:
 
-- If enough detail exists for chapter mapping → recommend **BuildBible** workflow
-- If the author wants to explore ideas further → recommend **Explore** workflow
-- If they want to start writing immediately from what exists → recommend **WriteChapter** workflow
+- If enough detail exists for chapter mapping --> recommend **BuildBible** workflow
+- If the author wants to explore specific ideas, connections, or questions further --> recommend **Explore** workflow
+- If they want to start writing immediately from what exists --> recommend **WriteChapter** workflow
 
 Store the structured output as the foundation for the Book Bible PRD.

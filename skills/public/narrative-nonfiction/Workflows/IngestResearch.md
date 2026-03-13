@@ -276,7 +276,8 @@ Present the Research Digest summary to the author with:
 **Pause:** Ask the author:
 - Does the chapter mapping look right?
 - Any sources assigned to the wrong chapter?
-- Ready to update the Book Bible and chapters? (→ triggers `UpdateFromResearch` workflow)
+- Want to explore any surprising connections or implications before updating? (-> triggers **Explore** workflow)
+- Ready to update the Book Bible and chapters? (-> triggers **UpdateFromResearch** workflow)
 
 ## Incremental Ingestion
 

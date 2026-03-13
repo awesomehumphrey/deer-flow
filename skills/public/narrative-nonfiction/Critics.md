@@ -1,6 +1,6 @@
 # Critic Profiles for Multi-Pass Review
 
-The WriteChapter workflow's revision step runs the completed chapter through multiple critic passes. Each critic examines the prose from a single focused angle and produces specific, actionable suggestions to tighten the draft.
+The WriteChapter and Revise workflows run completed or revised chapters through multiple critic passes. Each critic examines the prose from a single focused angle and produces specific, actionable suggestions to tighten the draft. WriteChapter runs the full set of mandatory passes on new chapters; Revise runs scoped passes targeted to the type of revision.
 
 This is adapted from WriteStory's fiction-focused critic system for non-fiction narrative.
 

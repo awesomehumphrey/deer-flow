@@ -213,7 +213,7 @@ Present the Book Bible to the author with:
 1. Summary of what has been mapped
 2. Any gaps or decisions still needed
 3. Recommendations for which chapter to write first
-4. Option to run **Explore** workflow for any layer that needs creative development
+4. Option to run **Explore** workflow for any idea, connection, or question that needs deeper thinking before writing begins
 5. Option to jump directly to **WriteChapter** for the strongest section
 
 The Book Bible is now the living document that guides all writing.

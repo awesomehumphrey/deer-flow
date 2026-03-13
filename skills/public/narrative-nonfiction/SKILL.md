@@ -1,6 +1,6 @@
 ---
 name: narrative-nonfiction
-description: Layered narrative non-fiction writing system adapted from WriteStory. Constructs books across seven simultaneous narrative dimensions powered by Will Storr's storytelling science and Mark Forsyth's rhetorical figures, adapted for non-fiction argument, evidence, and authorial voice. Modelled on books like The Age of Surveillance Capitalism and The Alignment Problem. Load alongside domain-specific book skills.
+description: Layered narrative non-fiction writing system adapted from WriteStory. Constructs books across seven simultaneous narrative dimensions powered by Will Storr's storytelling science and Mark Forsyth's rhetorical figures, adapted for non-fiction argument, evidence, and authorial voice. Seven workflows cover the full cycle from research ingestion through exploration, planning, composition, and revision. Modelled on books like The Age of Surveillance Capitalism and The Alignment Problem. Load alongside domain-specific book skills.
 ---
 
 # Narrative Non-Fiction Writing Skill
@@ -17,11 +17,13 @@ Route to the appropriate workflow based on the request.
 | --- | --- | --- |
 | **IngestResearch** | "analyse the research", "ingest documents", "read the papers", "scan my materials" | `Workflows/IngestResearch.md` |
 | **Interview** | "interview me", "extract my ideas", "help me plan the book" | `Workflows/Interview.md` |
+| **Explore** | "explore", "what if", "think through", "how does X relate to Y", "brainstorm", "implications of" | `Workflows/Explore.md` |
 | **BuildBible** | "build book plan", "create book bible", "map the chapters" | `Workflows/BuildBible.md` |
 | **UpdateFromResearch** | "update the book from research", "revise bible from materials", "incorporate research", "sync book with research" | `Workflows/UpdateFromResearch.md` |
-| **Explore** | "explore ideas", "brainstorm", "what if", "find angles" | `Workflows/Explore.md` |
 | **WriteChapter** | "write chapter", "draft", "write prose" | `Workflows/WriteChapter.md` |
-| **Revise** | "revise", "edit", "improve", "polish", "rewrite" | `Workflows/Revise.md` |
+| **Revise** | "revise", "fix", "strengthen", "integrate X into", "apply revision brief", "polish", "improve", "tighten" | `Workflows/Revise.md` |
+
+**Distinguishing WriteChapter from Revise:** WriteChapter is for initial composition — building a chapter from the Book Bible when no draft exists. Revise is for targeted changes to an existing draft, whether driven by critic feedback, revision briefs from UpdateFromResearch, new evidence, or author directives. If a revision escalates to a fundamental rewrite (e.g., the chapter's core argument is changing), switch to WriteChapter.
 
 ## The Seven Narrative Layers
 
@@ -55,3 +57,4 @@ Every chapter and the book as a whole is constructed across seven simultaneous l
 - **Anti-Cliché:** Built-in freshness system bans generic AI patterns and non-fiction-specific dead prose
 - **Aesthetic:** Configurable per project (Zuboff, Christian, O'Neil, Gladwell, Lewis, etc.)
 - **Scale:** Essay to multi-part book series
+- **Seven workflows:** IngestResearch, Interview, Explore, BuildBible, UpdateFromResearch, WriteChapter, Revise

@@ -179,9 +179,11 @@ The recommended sequence for writing this book:
 1. **Add research materials** to `/mnt/ValuesWork/` subdirectories
 2. **Ingest and analyse**: run IngestResearch to produce a Research Digest
 3. **Interview**: extract your vision, thesis, and narrative priorities
-4. **Build Bible**: create the full chapter map grounded in the actual research evidence (replaces the provisional chapter scaffold above)
-5. **Write chapters**: draft prose following the Book Bible, one chapter at a time
-6. **Iterate**: add more materials, re-ingest, update the Bible and drafts
+4. **Explore** (optional): think through connections, test ideas, follow intellectual threads before committing to a plan
+5. **Build Bible**: create the full chapter map grounded in the actual research evidence (replaces the provisional chapter scaffold above)
+6. **Write chapters**: draft prose following the Book Bible, one chapter at a time (WriteChapter for initial composition)
+7. **Revise**: apply critic feedback, integrate new evidence, polish prose (Revise for targeted changes to existing drafts)
+8. **Iterate**: add more materials, re-ingest, explore implications, update the Bible, and revise drafts
 
 The `narrative-nonfiction` skill provides the detailed workflows for each step. This skill provides the domain context those workflows need.
 
@@ -255,12 +257,14 @@ Sections correspond to the chapter plan in the Book Bible.]
 | Analyse all research materials | "Analyse the research materials in the ValuesWork folder" |
 | Process only new files | "I have added new papers, process them" |
 | Plan the book (interview) | "Interview me about my book Human Values in Software" |
+| Explore an idea or connection | "Explore the connection between dark patterns and security vulnerabilities" |
+| Think through implications | "What if software values alignment and AI alignment share a common root?" |
 | Create the master plan | "Build the book bible based on our interview and the research digest" |
 | Update plan from new research | "Update the book from the research" |
-| Write a chapter | "Write chapter 1 following the book bible" |
+| Write a chapter | "Write chapter 3 following the book bible" |
 | Write just the opening | "Draft the opening scene for chapter 1" |
 | Revise a chapter | "Revise chapter 1 based on the critic feedback" |
 | Integrate a specific paper | "Integrate the AIware 2025 paper into chapter 7" |
-| Explore an idea | "Explore the connection between dark patterns and security vulnerabilities" |
+| Polish prose | "Polish the prose in chapter 2, section 3" |
 | Check consistency | "Review the draft of chapter 2 for consistency with the book bible" |
-| Brainstorm examples | "Suggest concrete examples for the inclusion gap chapter" |
+| Brainstorm examples | "Brainstorm concrete examples for the inclusion gap chapter" |
