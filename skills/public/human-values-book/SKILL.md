@@ -188,24 +188,65 @@ When writing a chapter:
 
 ## Output Format
 
-When writing chapters, save as Markdown:
-```
+When writing chapters, save as Markdown to `/mnt/ValuesWork/drafts/chapter-NN-slug.md`:
+
+```markdown
 # Chapter N: Title
 
 ## Opening
 
-[Scene or hook]
+[Concrete scene, person, or moment that hooks the reader]
 
 ## [Section Title]
 
-[Content]
+[Prose — each section advances the chapter's argument through evidence,
+narrative, and analysis. Every paragraph serves at least one of the 7 layers.]
+
+## [Section Title]
+
+[Continue as needed — sections correspond to the chapter plan in the Book Bible]
 
 ---
 
-### Notes
-- Sources used: [list]
-- Questions for author: [list]
-- Gaps to fill: [list]
+## Chapter Notes
+
+### Layer Summary
+| Layer | What this chapter accomplished |
+|-------|-------------------------------|
+| Meaning | [Thesis element advanced] |
+| Intellectual Journey | [What was learnt or revised] |
+| Narrative Thread | [Question answered; new question raised] |
+| Mystery | [Information revealed; information withheld] |
+| Landscape | [Context established or deepened] |
+| Relationships | [Connections explored] |
+| Prose | [Register, key rhetorical figures deployed] |
+
+### Critic Pass Summary
+| Critic | Confidence (1-5) | Key action taken |
+|--------|-------------------|------------------|
+| Layer Auditor | | |
+| Evidence Inspector | | |
+| Rhetoric Examiner | | |
+| Freshness Inspector | | |
+| Reader Surrogate | | |
+
+### References Used
+- `citationKey` — role in this chapter (e.g. primary evidence for Section 2)
+- `citationKey` — role
+
+### New BibTeX Entries
+[Any entries added to references.bib during this chapter's writing]
+
+### Book Bible Updates
+[Any new connections, structural changes, or layer adjustments the Bible should reflect]
+
+### Gaps and Open Questions
+- [Evidence still missing]
+- [Questions for you to resolve]
+- [Suggested external research to fill gaps]
+
+### Recommended Next Step
+[Which chapter to write next, or which revision to undertake]
 ```
 
 ## Quick Commands
