@@ -201,7 +201,7 @@ The agent reads `Workflows/Explore.md` and follows the intellectual thread:
 4. Assesses what the exploration means for the book's argument and structure
 5. Produces exploration notes with findings, implications, and suggested next steps
 
-Exploration is deliberately open-ended. It is the divergent thinking space — testing ideas before committing to a plan. You can run multiple Explore sessions on different questions.
+Exploration is deliberately open-ended. It is the divergent thinking space: testing ideas before committing to a plan. You can run multiple Explore sessions on different questions.
 
 **Output:** Exploration notes saved to `/mnt/ValuesWork/notes/exploration-[slug].md`. Includes findings, surprises, implications for the book, and new questions raised.
 
@@ -215,13 +215,13 @@ Still in the **same chat thread**, type:
 
 The agent reads `Workflows/BuildBible.md` and constructs the master plan:
 
-- **Intellectual journey architecture** — your research arc from initial assumption to final thesis
-- **Full chapter map** — every chapter with all 7 narrative layers specified (Meaning, Intellectual Journey, Narrative Thread, Mystery, Landscape, Relationships, Prose)
-- **Mystery architecture** — what is revealed when, how information builds across the book
-- **Landscape framework** — institutional, historical, and economic context needed
-- **Relationship arcs** — between you and the subject, between people in the stories, between ideas
-- **Prose strategy** — aesthetic profile, rhetorical figure deployment plan
-- **Verification criteria** — checkable criteria for the book and each chapter
+- **Intellectual journey architecture**: your research arc from initial assumption to final thesis
+- **Full chapter map**: every chapter with all 7 narrative layers specified (Meaning, Intellectual Journey, Narrative Thread, Mystery, Landscape, Relationships, Prose)
+- **Mystery architecture**: what is revealed when, how information builds across the book
+- **Landscape framework**: institutional, historical, and economic context needed
+- **Relationship arcs**: between you and the subject, between people in the stories, between ideas
+- **Prose strategy**: aesthetic profile, rhetorical figure deployment plan
+- **Verification criteria**: checkable criteria for the book and each chapter
 
 This replaces the provisional chapter scaffold in the skill file. The chapter structure, parts, and ordering are now grounded in the actual research evidence.
 
@@ -263,8 +263,8 @@ As your research continues, add new documents to the `~/Documents/ValuesWork/` f
 
 This chains two workflows:
 
-1. **IngestResearch** (incremental) — only reads new or changed files, merges into the existing Research Digest
-2. **UpdateFromResearch** — assesses the impact on each chapter, updates the Book Bible, and for already-drafted chapters produces targeted **revision briefs** (what to add, change, or remove) rather than rewriting from scratch
+1. **IngestResearch** (incremental): only reads new or changed files, merges into the existing Research Digest
+2. **UpdateFromResearch**: assesses the impact on each chapter, updates the Book Bible, and for already-drafted chapters produces targeted **revision briefs** (what to add, change, or remove) rather than rewriting from scratch
 
 The agent will:
 

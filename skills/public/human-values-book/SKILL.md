@@ -7,11 +7,13 @@ description: Custom skill for writing "Human Values in Software" by Dr. Humphrey
 
 ## Overview
 
-This skill provides the domain context for writing "Human Values in Software", a narrative non-fiction book about how software systems violate human values and how we can detect and prevent these violations. The writing methodology, layer system, and workflows come from the `narrative-nonfiction` skill; this file provides what is specific to *this* book.
+This skill provides the domain context for writing "Human Values in Software", a narrative non-fiction book about how software systems violate human values and how we can detect and prevent these violations. The writing methodology, layer system, and workflows come from the `narrative-nonfiction` skill; this file provides what is specific to _this_ book.
 
 **Companion skill:** `narrative-nonfiction` (must be loaded alongside this skill for all writing work)
 
 ## Language Rules
+
+These rules apply to all book output (chapter prose, exploration notes, revision briefs, the Book Bible, the Research Digest) and to book-specific documentation (this file, GETTING-STARTED.md).
 
 Write in **British English** throughout: "behaviour" not "behavior", "recognise" not "recognize", "licence" not "license", "analyse" not "analyze".
 
@@ -31,7 +33,7 @@ Do **not** use em-dashes. Use commas, semicolons, colons, or restructure the sen
 
 These are real experiences to draw on for narrative hooks and chapter openings. More will emerge from the Interview workflow; the list below is a starting set, not exhaustive.
 
-1. **RMIT terms and conditions**: Personal experience with RMIT's terms and conditions during recruitment. Link to relevant *Black Mirror* episode as a cultural hook on how institutions embed values violations into legal language users never read.
+1. **RMIT terms and conditions**: Personal experience with RMIT's terms and conditions during recruitment. Link to relevant _Black Mirror_ episode as a cultural hook on how institutions embed values violations into legal language users never read.
 
 2. **Student privacy policy task**: Giving students the task of developing software to flag issues in privacy policies. Use as an illustration of how values violations can be taught, detected, and made visible.
 
@@ -108,6 +110,7 @@ Every chapter must advance at least 3 layers. The Intellectual Journey (your evo
 > **PROVISIONAL:** The chapter structure below is a rough scaffold based on paper titles and early conversations. It has NOT been validated against the actual research materials. Once the research documents are added to `/mnt/ValuesWork/` and analysed via the IngestResearch workflow, this entire section should be **rebuilt from the evidence**. The BuildBible and UpdateFromResearch workflows will replace this scaffold with a proper, research-grounded chapter map across all 7 narrative layers.
 
 **Introduction**
+
 - Frame the book's purpose and personal narrative
 - Establish the intellectual history of human values: Rokeach (terminal vs. instrumental values), Schwartz (universal values model), and older philosophical traditions (Aristotle, Kant, Mill)
 - Distinguish software values alignment from AI alignment
@@ -115,23 +118,19 @@ Every chapter must advance at least 3 layers. The Intellectual Journey (your evo
 - Write this LAST, after all other chapters are drafted
 
 **Part I: The Problem**
+
 1. **Dark Patterns at Scale**: The industry of manipulation. Opens with the world the general reader already inhabits: apps they use daily, patterns they have felt but could not name. Establishes the scale and normalisation of deception before introducing research evidence. References Brignull's dark patterns taxonomy, EU regulation, and industry-wide behaviour.
 
 2. **The Honesty Gap**: How apps deceive users. Brings in the empirical research as rigorous evidence behind what Ch. 1 has already made the reader feel. Your detection methodology and findings now land with weight.
 
-**Part II: The Human Cost**
-3. **The Inclusion Gap**: Who gets left behind
-4. **Trust Betrayed**: When software lies
+**Part II: The Human Cost** 3. **The Inclusion Gap**: Who gets left behind 4. **Trust Betrayed**: When software lies
 
-**Part III: The Developer's Dilemma**
-5. **Building Under Pressure**: Why developers ship violations
-6. **The Security Connection**: Values violations as attack vectors
+**Part III: The Developer's Dilemma** 5. **Building Under Pressure**: Why developers ship violations 6. **The Security Connection**: Values violations as attack vectors
 
-**Part IV: Toward Solutions**
-7. **Automated Detection**: Teaching machines to find violations
-8. **A Value-Aligned Future**: What comes next
+**Part IV: Toward Solutions** 7. **Automated Detection**: Teaching machines to find violations 8. **A Value-Aligned Future**: What comes next
 
 **Epilogue**
+
 - Closing reflections on the journey
 - A call to action for developers, policymakers, and users
 
@@ -140,6 +139,7 @@ Every chapter must advance at least 3 layers. The Intellectual Journey (your evo
 > **Note:** The specific publications listed below are known references from early conversations. The full list will be determined by the IngestResearch workflow after all materials are added. The Research Digest will provide the authoritative mapping of sources to chapters.
 
 ### Your Publications (cite throughout)
+
 - "Automated detection, categorisation and developers' experience with violations of honesty in mobile apps" (Empirical Software Engineering, 2023)
 - "A Vision for Value-Aligned AI-Driven Systems" (AIware 2025)
 - "ChroniUXMag: A Persona-Driven Framework for Inclusive mHealth Requirements Engineering"
@@ -147,30 +147,33 @@ Every chapter must advance at least 3 layers. The Intellectual Journey (your evo
 - Android API investigation linking values violations to security
 
 ### Grant Documents (provide research framing and scope)
+
 - Your DECRA application
 - John's DP20
 - FLOSS ICSE proposal and report
 
 ### OVIS Lab Papers
+
 - Include relevant papers by members of the OVIS lab (your collaborators)
 
 ### Key Reading Highlights (for intertextual references)
-- Brian Christian, *The Alignment Problem*
-- John Lennox, *2084*
+
+- Brian Christian, _The Alignment Problem_
+- John Lennox, _2084_
 - Brian Christian (other works)
 
 ## Terminology Consistency
 
-| Term | Definition | Use |
-|------|------------|-----|
-| Values violations | Actions by software that conflict with human values | Primary term throughout |
-| Human values | Honesty, transparency, integrity, inclusivity, autonomy, etc. | Define early using Schwartz/Rokeach, use throughout |
-| Dark patterns | Deceptive UI design | Use when discussing industry practices |
-| Value-aligned | Software that respects human values | For solutions sections |
-| Software values alignment | Ensuring software systems respect user values | Distinguish clearly from AI alignment |
-| Initial assumption | What the reader or author believed before the evidence | Intellectual Journey Framework term |
-| Research Digest | Structured analysis of all ingested research materials | Output of IngestResearch workflow |
-| Book Bible | Master plan mapping all 7 layers across all chapters | Output of BuildBible workflow |
+| Term                      | Definition                                                    | Use                                                 |
+| ------------------------- | ------------------------------------------------------------- | --------------------------------------------------- |
+| Values violations         | Actions by software that conflict with human values           | Primary term throughout                             |
+| Human values              | Honesty, transparency, integrity, inclusivity, autonomy, etc. | Define early using Schwartz/Rokeach, use throughout |
+| Dark patterns             | Deceptive UI design                                           | Use when discussing industry practices              |
+| Value-aligned             | Software that respects human values                           | For solutions sections                              |
+| Software values alignment | Ensuring software systems respect user values                 | Distinguish clearly from AI alignment               |
+| Initial assumption        | What the reader or author believed before the evidence        | Intellectual Journey Framework term                 |
+| Research Digest           | Structured analysis of all ingested research materials        | Output of IngestResearch workflow                   |
+| Book Bible                | Master plan mapping all 7 layers across all chapters          | Output of BuildBible workflow                       |
 
 ## Writing Workflow
 
@@ -213,58 +216,65 @@ Sections correspond to the chapter plan in the Book Bible.]
 ## Chapter Notes
 
 ### Layer Summary
-| Layer | What this chapter accomplished |
-|-------|-------------------------------|
-| Meaning | [Thesis element advanced] |
-| Intellectual Journey | [What was learnt or revised] |
-| Narrative Thread | [Question answered; new question raised] |
-| Mystery | [Information revealed; information withheld] |
-| Landscape | [Context established or deepened] |
-| Relationships | [Connections explored] |
-| Prose | [Register, key rhetorical figures deployed] |
+
+| Layer                | What this chapter accomplished               |
+| -------------------- | -------------------------------------------- |
+| Meaning              | [Thesis element advanced]                    |
+| Intellectual Journey | [What was learnt or revised]                 |
+| Narrative Thread     | [Question answered; new question raised]     |
+| Mystery              | [Information revealed; information withheld] |
+| Landscape            | [Context established or deepened]            |
+| Relationships        | [Connections explored]                       |
+| Prose                | [Register, key rhetorical figures deployed]  |
 
 ### Critic Pass Summary
-| Critic | Confidence (1-5) | Key action taken |
-|--------|-------------------|------------------|
-| Layer Auditor | | |
-| Evidence Inspector | | |
-| Rhetoric Examiner | | |
-| Freshness Inspector | | |
-| Reader Surrogate | | |
+
+| Critic              | Confidence (1-5) | Key action taken |
+| ------------------- | ---------------- | ---------------- |
+| Layer Auditor       |                  |                  |
+| Evidence Inspector  |                  |                  |
+| Rhetoric Examiner   |                  |                  |
+| Freshness Inspector |                  |                  |
+| Reader Surrogate    |                  |                  |
 
 ### References Used
+
 - `citationKey`: role in this chapter (e.g. primary evidence for Section 2)
 
 ### New BibTeX Entries
+
 [Any entries added to references.bib during this chapter's writing]
 
 ### Book Bible Updates
+
 [Any new connections, structural changes, or layer adjustments the Bible should reflect]
 
 ### Gaps and Open Questions
+
 - [Evidence still missing]
 - [Questions for you to resolve]
 - [Suggested external research to fill gaps]
 
 ### Recommended Next Step
+
 [Which chapter to write next, or which revision to undertake]
 ```
 
 ## Quick Commands
 
-| What you want | What to type |
-|---|---|
-| Analyse all research materials | "Analyse the research materials in the ValuesWork folder" |
-| Process only new files | "I have added new papers, process them" |
-| Plan the book (interview) | "Interview me about my book Human Values in Software" |
-| Explore an idea or connection | "Explore the connection between dark patterns and security vulnerabilities" |
-| Think through implications | "What if software values alignment and AI alignment share a common root?" |
-| Create the master plan | "Build the book bible based on our interview and the research digest" |
-| Update plan from new research | "Update the book from the research" |
-| Write a chapter | "Write chapter 3 following the book bible" |
-| Write just the opening | "Draft the opening scene for chapter 1" |
-| Revise a chapter | "Revise chapter 1 based on the critic feedback" |
-| Integrate a specific paper | "Integrate the AIware 2025 paper into chapter 7" |
-| Polish prose | "Polish the prose in chapter 2, section 3" |
-| Check consistency | "Review the draft of chapter 2 for consistency with the book bible" |
-| Brainstorm examples | "Brainstorm concrete examples for the inclusion gap chapter" |
+| What you want                  | What to type                                                                |
+| ------------------------------ | --------------------------------------------------------------------------- |
+| Analyse all research materials | "Analyse the research materials in the ValuesWork folder"                   |
+| Process only new files         | "I have added new papers, process them"                                     |
+| Plan the book (interview)      | "Interview me about my book Human Values in Software"                       |
+| Explore an idea or connection  | "Explore the connection between dark patterns and security vulnerabilities" |
+| Think through implications     | "What if software values alignment and AI alignment share a common root?"   |
+| Create the master plan         | "Build the book bible based on our interview and the research digest"       |
+| Update plan from new research  | "Update the book from the research"                                         |
+| Write a chapter                | "Write chapter 3 following the book bible"                                  |
+| Write just the opening         | "Draft the opening scene for chapter 1"                                     |
+| Revise a chapter               | "Revise chapter 1 based on the critic feedback"                             |
+| Integrate a specific paper     | "Integrate the AIware 2025 paper into chapter 7"                            |
+| Polish prose                   | "Polish the prose in chapter 2, section 3"                                  |
+| Check consistency              | "Review the draft of chapter 2 for consistency with the book bible"         |
+| Brainstorm examples            | "Brainstorm concrete examples for the inclusion gap chapter"                |
