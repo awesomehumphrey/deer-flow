@@ -9,7 +9,9 @@ Transform Book Bible chapter plans into actual prose. This is where all seven la
 - Read `AntiCliche.md`: mandatory freshness enforcement
 - Read `AestheticProfiles.md`: the configured style guide
 - Read `Critics.md`: multi-pass review profiles
+- Read `Bibliography.md`: citation conventions and reference management
 - Know which chapter(s) this output covers
+- Verify `references.bib` exists and contains entries for planned sources
 
 ## Procedure
 
@@ -35,6 +37,7 @@ Before writing, plan the evidence for this chapter:
 3. **Source attribution:** Are all sources specifically attributed?
 4. **Counter-evidence:** What alternative perspectives or counter-arguments does this chapter address?
 5. **Gaps:** What evidence is missing that the reader might expect?
+6. **Bibliography check:** Verify every planned source has a BibTeX entry in `references.bib`. Add any missing entries now, before writing begins. See `Bibliography.md` for conventions.
 
 #### Rhetorical Figure Strategy
 
@@ -199,8 +202,10 @@ Present the written chapter with:
 2. A brief note on which layers were advanced and how
 3. **Critic pass summary:** confidence ratings from each critic and a 1-sentence summary of changes applied
 4. Any Book Bible updates needed (if writing revealed new connections)
-5. Recommendation for what to write next
-6. Updated verification criteria (mark completed criteria)
+5. **References used:** List all citation keys used in this chapter with a brief note on their role (see `Bibliography.md` for the chapter-level reference tracking format)
+6. **New BibTeX entries:** Any entries added to `references.bib` during this chapter's writing
+7. Recommendation for what to write next
+8. Updated verification criteria (mark completed criteria)
 
 ### Chapter Length Guidelines
 

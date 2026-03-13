@@ -44,6 +44,7 @@ Every chapter and the book as a whole is constructed across seven simultaneous l
 | Non-Fiction Structures | `NonfictionStructures.md` | Book-level and chapter-level structural frameworks |
 | Aesthetic Profiles | `AestheticProfiles.md` | Voice profiles modelled on landmark non-fiction writers |
 | Critic Profiles | `Critics.md` | Multi-pass review system adapted for non-fiction |
+| Bibliography Management | `Bibliography.md` | BibTeX conventions, citation style, reference workflow |
 
 ## Quick Reference
 
