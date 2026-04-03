@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import type { PromptInputMessage } from "@/components/ai-elements/prompt-input";
 
 import { getAPIClient } from "../api";
+import { getBackendBaseURL } from "../config";
 import { useI18n } from "../i18n/hooks";
 import type { FileInMessage } from "../messages/utils";
 import type { LocalSettings } from "../settings";
@@ -30,6 +31,29 @@ export type ThreadStreamOptions = {
   onFinish?: (state: AgentThreadState) => void;
   onToolEnd?: (event: ToolEndEvent) => void;
 };
+
+function getStreamErrorMessage(error: unknown): string {
+  if (typeof error === "string" && error.trim()) {
+    return error;
+  }
+  if (error instanceof Error && error.message.trim()) {
+    return error.message;
+  }
+  if (typeof error === "object" && error !== null) {
+    const message = Reflect.get(error, "message");
+    if (typeof message === "string" && message.trim()) {
+      return message;
+    }
+    const nestedError = Reflect.get(error, "error");
+    if (nestedError instanceof Error && nestedError.message.trim()) {
+      return nestedError.message;
+    }
+    if (typeof nestedError === "string" && nestedError.trim()) {
+      return nestedError;
+    }
+  }
+  return "Request failed.";
+}
 
 export function useThreadStream({
   threadId,
@@ -146,7 +170,25 @@ export function useThreadStream({
           message: AIMessage;
         };
         updateSubtask({ id: e.task_id, latestMessage: e.message });
+        return;
       }
+
+      if (
+        typeof event === "object" &&
+        event !== null &&
+        "type" in event &&
+        event.type === "llm_retry" &&
+        "message" in event &&
+        typeof event.message === "string" &&
+        event.message.trim()
+      ) {
+        const e = event as { type: "llm_retry"; message: string };
+        toast(e.message);
+      }
+    },
+    onError(error) {
+      setOptimisticMessages([]);
+      toast.error(getStreamErrorMessage(error));
     },
     onFinish(state) {
       listeners.current.onFinish?.(state.values);
@@ -156,6 +198,8 @@ export function useThreadStream({
 
   // Optimistic messages shown before the server stream responds
   const [optimisticMessages, setOptimisticMessages] = useState<Message[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+  const sendInFlightRef = useRef(false);
   // Track message count before sending so we know when server has responded
   const prevMsgCountRef = useRef(thread.messages.length);
 
@@ -175,6 +219,11 @@ export function useThreadStream({
       message: PromptInputMessage,
       extraContext?: Record<string, unknown>,
     ) => {
+      if (sendInFlightRef.current) {
+        return;
+      }
+      sendInFlightRef.current = true;
+
       const text = message.text.trim();
 
       // Capture current count before showing optimistic messages
@@ -217,6 +266,7 @@ export function useThreadStream({
       try {
         // Upload files first if any
         if (message.files && message.files.length > 0) {
+          setIsUploading(true);
           try {
             // Convert FileUIPart to File objects by fetching blob URLs
             const filePromises = message.files.map(async (fileUIPart) => {
@@ -293,6 +343,8 @@ export function useThreadStream({
             toast.error(errorMessage);
             setOptimisticMessages([]);
             throw error;
+          } finally {
+            setIsUploading(false);
           }
         }
 
@@ -335,6 +387,15 @@ export function useThreadStream({
               thinking_enabled: context.mode !== "flash",
               is_plan_mode: context.mode === "pro" || context.mode === "ultra",
               subagent_enabled: context.mode === "ultra",
+              reasoning_effort:
+                context.reasoning_effort ??
+                (context.mode === "ultra"
+                  ? "high"
+                  : context.mode === "pro"
+                    ? "medium"
+                    : context.mode === "thinking"
+                      ? "low"
+                      : undefined),
               thread_id: threadId,
             },
           },
@@ -342,7 +403,10 @@ export function useThreadStream({
         void queryClient.invalidateQueries({ queryKey: ["threads", "search"] });
       } catch (error) {
         setOptimisticMessages([]);
+        setIsUploading(false);
         throw error;
+      } finally {
+        sendInFlightRef.current = false;
       }
     },
     [thread, _handleOnStart, t.uploads.uploadingFiles, context, queryClient],
@@ -357,7 +421,7 @@ export function useThreadStream({
         } as typeof thread)
       : thread;
 
-  return [mergedThread, sendMessage] as const;
+  return [mergedThread, sendMessage, isUploading] as const;
 }
 
 export function useThreads(
@@ -379,7 +443,8 @@ export function useThreads(
       // Preserve prior semantics: if a non-positive limit is explicitly provided,
       // delegate to a single search call with the original parameters.
       if (maxResults !== undefined && maxResults <= 0) {
-        const response = await apiClient.threads.search<AgentThreadState>(params);
+        const response =
+          await apiClient.threads.search<AgentThreadState>(params);
         return response as AgentThread[];
       }
 
@@ -432,6 +497,20 @@ export function useDeleteThread() {
   return useMutation({
     mutationFn: async ({ threadId }: { threadId: string }) => {
       await apiClient.threads.delete(threadId);
+
+      const response = await fetch(
+        `${getBackendBaseURL()}/api/threads/${encodeURIComponent(threadId)}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      if (!response.ok) {
+        const error = await response
+          .json()
+          .catch(() => ({ detail: "Failed to delete local thread data." }));
+        throw new Error(error.detail ?? "Failed to delete local thread data.");
+      }
     },
     onSuccess(_, { threadId }) {
       queryClient.setQueriesData(
@@ -439,10 +518,16 @@ export function useDeleteThread() {
           queryKey: ["threads", "search"],
           exact: false,
         },
-        (oldData: Array<AgentThread>) => {
+        (oldData: Array<AgentThread> | undefined) => {
+          if (oldData == null) {
+            return oldData;
+          }
           return oldData.filter((t) => t.thread_id !== threadId);
         },
       );
+    },
+    onSettled() {
+      void queryClient.invalidateQueries({ queryKey: ["threads", "search"] });
     },
   });
 }

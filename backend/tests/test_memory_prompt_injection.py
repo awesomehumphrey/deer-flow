@@ -2,7 +2,7 @@
 
 import math
 
-from src.agents.memory.prompt import _coerce_confidence, format_memory_for_injection
+from deerflow.agents.memory.prompt import _coerce_confidence, format_memory_for_injection
 
 
 def test_format_memory_includes_facts_section() -> None:
@@ -39,7 +39,7 @@ def test_format_memory_sorts_facts_by_confidence_desc() -> None:
 
 def test_format_memory_respects_budget_when_adding_facts(monkeypatch) -> None:
     # Make token counting deterministic for this test by counting characters.
-    monkeypatch.setattr("src.agents.memory.prompt._count_tokens", lambda text, encoding_name="cl100k_base": len(text))
+    monkeypatch.setattr("deerflow.agents.memory.prompt._count_tokens", lambda text, encoding_name="cl100k_base": len(text))
 
     memory_data = {
         "user": {},
@@ -120,3 +120,37 @@ def test_format_memory_skips_non_string_content_facts() -> None:
     assert "| 0.85]" not in result
     assert "Valid fact" in result
 
+
+def test_format_memory_renders_correction_source_error() -> None:
+    memory_data = {
+        "facts": [
+            {
+                "content": "Use make dev for local development.",
+                "category": "correction",
+                "confidence": 0.95,
+                "sourceError": "The agent previously suggested npm start.",
+            }
+        ]
+    }
+
+    result = format_memory_for_injection(memory_data, max_tokens=2000)
+
+    assert "Use make dev for local development." in result
+    assert "avoid: The agent previously suggested npm start." in result
+
+
+def test_format_memory_renders_correction_without_source_error_normally() -> None:
+    memory_data = {
+        "facts": [
+            {
+                "content": "Use make dev for local development.",
+                "category": "correction",
+                "confidence": 0.95,
+            }
+        ]
+    }
+
+    result = format_memory_for_injection(memory_data, max_tokens=2000)
+
+    assert "Use make dev for local development." in result
+    assert "avoid:" not in result

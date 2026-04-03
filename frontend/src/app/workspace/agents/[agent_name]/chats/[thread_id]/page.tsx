@@ -9,16 +9,18 @@ import { Button } from "@/components/ui/button";
 import { AgentWelcome } from "@/components/workspace/agent-welcome";
 import { ArtifactTrigger } from "@/components/workspace/artifacts";
 import { ChatBox, useThreadChat } from "@/components/workspace/chats";
+import { ExportTrigger } from "@/components/workspace/export-trigger";
 import { InputBox } from "@/components/workspace/input-box";
 import { MessageList } from "@/components/workspace/messages";
 import { ThreadContext } from "@/components/workspace/messages/context";
 import { ThreadTitle } from "@/components/workspace/thread-title";
 import { TodoList } from "@/components/workspace/todo-list";
+import { TokenUsageIndicator } from "@/components/workspace/token-usage-indicator";
 import { Tooltip } from "@/components/workspace/tooltip";
 import { useAgent } from "@/core/agents";
 import { useI18n } from "@/core/i18n/hooks";
 import { useNotification } from "@/core/notification/hooks";
-import { useLocalSettings } from "@/core/settings";
+import { useThreadSettings } from "@/core/settings";
 import { useThreadStream } from "@/core/threads/hooks";
 import { textOfMessage } from "@/core/threads/utils";
 import { env } from "@/env";
@@ -26,7 +28,6 @@ import { cn } from "@/lib/utils";
 
 export default function AgentChatPage() {
   const { t } = useI18n();
-  const [settings, setSettings] = useLocalSettings();
   const router = useRouter();
 
   const { agent_name } = useParams<{
@@ -36,6 +37,7 @@ export default function AgentChatPage() {
   const { agent } = useAgent(agent_name);
 
   const { threadId, isNewThread, setIsNewThread } = useThreadChat();
+  const [settings, setSettings] = useThreadSettings(threadId);
 
   const { showNotification } = useNotification();
   const [thread, sendMessage] = useThreadStream({
@@ -114,6 +116,8 @@ export default function AgentChatPage() {
                   <PlusSquare /> {t.agents.newChat}
                 </Button>
               </Tooltip>
+              <TokenUsageIndicator messages={thread.messages} />
+              <ExportTrigger threadId={threadId} />
               <ArtifactTrigger />
             </div>
           </header>
@@ -154,7 +158,13 @@ export default function AgentChatPage() {
                   isNewThread={isNewThread}
                   threadId={threadId}
                   autoFocus={isNewThread}
-                  status={thread.isLoading ? "streaming" : "ready"}
+                  status={
+                    thread.error
+                      ? "error"
+                      : thread.isLoading
+                        ? "streaming"
+                        : "ready"
+                  }
                   context={settings.context}
                   extraHeader={
                     isNewThread && (

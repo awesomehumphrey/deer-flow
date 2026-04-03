@@ -9,6 +9,13 @@ set -e
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$REPO_ROOT"
 
+# ── Load environment variables from .env ──────────────────────────────────────
+if [ -f "$REPO_ROOT/.env" ]; then
+    set -a
+    source "$REPO_ROOT/.env"
+    set +a
+fi
+
 # ── Argument parsing ─────────────────────────────────────────────────────────
 
 DEV_MODE=true
@@ -23,14 +30,22 @@ done
 if $DEV_MODE; then
     FRONTEND_CMD="pnpm run dev"
 else
-    FRONTEND_CMD="env BETTER_AUTH_SECRET=$(python3 -c 'import secrets; print(secrets.token_hex(16))') pnpm run preview"
+    if command -v python3 >/dev/null 2>&1; then
+        PYTHON_BIN="python3"
+    elif command -v python >/dev/null 2>&1; then
+        PYTHON_BIN="python"
+    else
+        echo "Python is required to generate BETTER_AUTH_SECRET, but neither python3 nor python was found."
+        exit 1
+    fi
+    FRONTEND_CMD="env BETTER_AUTH_SECRET=$($PYTHON_BIN -c 'import secrets; print(secrets.token_hex(16))') pnpm run preview"
 fi
 
 # ── Stop existing services ────────────────────────────────────────────────────
 
 echo "Stopping existing services if any..."
 pkill -f "langgraph dev" 2>/dev/null || true
-pkill -f "uvicorn src.gateway.app:app" 2>/dev/null || true
+pkill -f "uvicorn app.gateway.app:app" 2>/dev/null || true
 pkill -f "next dev" 2>/dev/null || true
 pkill -f "next-server" 2>/dev/null || true
 nginx -c "$REPO_ROOT/docker/nginx/nginx.local.conf" -p "$REPO_ROOT" -s quit 2>/dev/null || true
@@ -78,16 +93,23 @@ if ! { \
     exit 1
 fi
 
+# ── Auto-upgrade config ──────────────────────────────────────────────────
+
+"$REPO_ROOT/scripts/config-upgrade.sh"
+
 # ── Cleanup trap ─────────────────────────────────────────────────────────────
 
 cleanup() {
     trap - INT TERM
     echo ""
     echo "Shutting down services..."
-    pkill -f "langgraph dev" 2>/dev/null || true
-    pkill -f "uvicorn src.gateway.app:app" 2>/dev/null || true
+    if [ "${SKIP_LANGGRAPH_SERVER:-0}" != "1" ]; then
+        pkill -f "langgraph dev" 2>/dev/null || true
+    fi
+    pkill -f "uvicorn app.gateway.app:app" 2>/dev/null || true
     pkill -f "next dev" 2>/dev/null || true
     pkill -f "next start" 2>/dev/null || true
+    pkill -f "next-server" 2>/dev/null || true
     # Kill nginx using the captured PID first (most reliable),
     # then fall back to pkill/killall for any stray nginx workers.
     if [ -n "${NGINX_PID:-}" ] && kill -0 "$NGINX_PID" 2>/dev/null; then
@@ -107,32 +129,47 @@ trap cleanup INT TERM
 # ── Start services ────────────────────────────────────────────────────────────
 
 mkdir -p logs
+mkdir -p temp/client_body_temp temp/proxy_temp temp/fastcgi_temp temp/uwsgi_temp temp/scgi_temp
 
 if $DEV_MODE; then
-    LANGGRAPH_EXTRA_FLAGS=""
-    GATEWAY_EXTRA_FLAGS="--reload --reload-include='*.yaml' --reload-include='.env'"
+    LANGGRAPH_EXTRA_FLAGS="--no-reload"
+    GATEWAY_EXTRA_FLAGS="--reload --reload-include='*.yaml' --reload-include='.env' --reload-exclude='*.pyc' --reload-exclude='__pycache__' --reload-exclude='sandbox/' --reload-exclude='.deer-flow/'"
 else
     LANGGRAPH_EXTRA_FLAGS="--no-reload"
     GATEWAY_EXTRA_FLAGS=""
 fi
 
-echo "Starting LangGraph server..."
-(cd backend && NO_COLOR=1 uv run langgraph dev --no-browser --allow-blocking $LANGGRAPH_EXTRA_FLAGS > ../logs/langgraph.log 2>&1) &
-./scripts/wait-for-port.sh 2024 60 "LangGraph" || {
-    echo "  See logs/langgraph.log for details"
-    tail -20 logs/langgraph.log
-    cleanup
-}
-echo "✓ LangGraph server started on localhost:2024"
+if [ "${SKIP_LANGGRAPH_SERVER:-0}" != "1" ]; then
+    echo "Starting LangGraph server..."
+    # Read log_level from config.yaml, fallback to env var, then to "info"
+    CONFIG_LOG_LEVEL=$(grep -m1 '^log_level:' config.yaml 2>/dev/null | awk '{print $2}' | tr -d ' ')
+    LANGGRAPH_LOG_LEVEL="${LANGGRAPH_LOG_LEVEL:-${CONFIG_LOG_LEVEL:-info}}"
+    (cd backend && NO_COLOR=1 uv run langgraph dev --no-browser --allow-blocking --server-log-level $LANGGRAPH_LOG_LEVEL $LANGGRAPH_EXTRA_FLAGS > ../logs/langgraph.log 2>&1) &
+    ./scripts/wait-for-port.sh 2024 60 "LangGraph" || {
+        echo "  See logs/langgraph.log for details"
+        tail -20 logs/langgraph.log
+        if grep -qE "config_version|outdated|Environment variable .* not found|KeyError|ValidationError|config\.yaml" logs/langgraph.log 2>/dev/null; then
+            echo ""
+            echo "  Hint: This may be a configuration issue. Try running 'make config-upgrade' to update your config.yaml."
+        fi
+        cleanup
+    }
+    echo "✓ LangGraph server started on localhost:2024"
+else
+    echo "⏩ Skipping LangGraph server (SKIP_LANGGRAPH_SERVER=1)"
+    echo "   Use /api/langgraph-compat/* via Gateway instead"
+fi
 
 echo "Starting Gateway API..."
-(cd backend && uv run uvicorn src.gateway.app:app --host 0.0.0.0 --port 8001 $GATEWAY_EXTRA_FLAGS > ../logs/gateway.log 2>&1) &
+(cd backend && PYTHONPATH=. uv run uvicorn app.gateway.app:app --host 0.0.0.0 --port 8001 $GATEWAY_EXTRA_FLAGS > ../logs/gateway.log 2>&1) &
 ./scripts/wait-for-port.sh 8001 30 "Gateway API" || {
     echo "✗ Gateway API failed to start. Last log output:"
     tail -60 logs/gateway.log
     echo ""
     echo "Likely configuration errors:"
     grep -E "Failed to load configuration|Environment variable .* not found|config\.yaml.*not found" logs/gateway.log | tail -5 || true
+    echo ""
+    echo "  Hint: Try running 'make config-upgrade' to update your config.yaml with the latest fields."
     cleanup
 }
 echo "✓ Gateway API started on localhost:8001"
@@ -169,7 +206,16 @@ echo "=========================================="
 echo ""
 echo "  🌐 Application: http://localhost:2026"
 echo "  📡 API Gateway: http://localhost:2026/api/*"
-echo "  🤖 LangGraph:   http://localhost:2026/api/langgraph/*"
+if [ "${SKIP_LANGGRAPH_SERVER:-0}" = "1" ]; then
+    echo "  🤖 LangGraph: skipped (SKIP_LANGGRAPH_SERVER=1)"
+else
+    echo "  🤖 LangGraph: http://localhost:2026/api/langgraph/* (served by langgraph dev)"
+fi
+echo "  🧪 LangGraph Compat (experimental): http://localhost:2026/api/langgraph-compat/* (served by Gateway)"
+if [ "${SKIP_LANGGRAPH_SERVER:-0}" = "1" ]; then
+    echo ""
+    echo "  💡 Set NEXT_PUBLIC_LANGGRAPH_BASE_URL=/api/langgraph-compat in frontend/.env.local"
+fi
 echo ""
 echo "  📋 Logs:"
 echo "     - LangGraph: logs/langgraph.log"
