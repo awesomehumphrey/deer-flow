@@ -49,7 +49,7 @@ Include your CV and biographical information from `/mnt/ValuesWork/bio/` when wr
 
 ## Source Materials
 
-Your personal research materials are mounted at `/mnt/ValuesWork/`. This folder provides the grounding for the book: your own publications, interviews, grants, reading highlights, and lived experience. It is **not** the limit of the book's research scope. The agent should also conduct web research, search academic literature, cite external works, and draw on any sources appropriate to a serious academic trade book. Think of ValuesWork as the personal foundation; the broader intellectual landscape is built on top of it.
+Your personal research materials are mounted at `/mnt/ValuesWork/`. This folder provides the grounding for the book: your own publications, interviews, grants, reading highlights, and lived experience. It is **not** the limit of the book's research scope. Use the **`deep-research`** skill to conduct web research, search academic literature, and find external sources appropriate to a serious academic trade book. Think of ValuesWork as the personal foundation; the broader intellectual landscape is built on top of it using `deep-research`.
 
 ```
 /mnt/ValuesWork/

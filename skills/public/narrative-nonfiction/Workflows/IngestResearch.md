@@ -4,7 +4,7 @@ Scan research material directories, read and analyse documents, extract key find
 
 ## Scope
 
-The research directories (e.g. `/mnt/ValuesWork/`) contain the author's personal grounding materials: their own publications, grants, interviews, reading highlights, and lived experience. This workflow ingests those materials and identifies what evidence is available and what is missing. Gaps identified here should drive **external research** (web search, academic literature review, broader source discovery) in subsequent workflows. The book's evidence base extends well beyond what is stored locally.
+The research directories (e.g. `/mnt/ValuesWork/`) contain the author's personal grounding materials: their own publications, grants, interviews, reading highlights, and lived experience. This workflow ingests those materials and identifies what evidence is available and what is missing. Gaps identified here should drive **external research** using the **`deep-research`** skill (web search, academic literature review, broader source discovery) in subsequent workflows. The book's evidence base extends well beyond what is stored locally.
 
 ## Prerequisites
 
