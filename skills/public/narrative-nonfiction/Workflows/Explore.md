@@ -52,7 +52,7 @@ Draw from:
 2. **Book Bible** — chapter plans that touch on the topic, intellectual journey arc, mystery architecture
 3. **Existing drafts** — passages in drafted chapters that address related ideas
 4. **Book-specific skill** — author context, anecdotes, terminology that bears on the question
-5. **External knowledge** — broader academic and intellectual context beyond the local materials
+5. **External knowledge** — use the **`deep-research`** skill for broader academic and intellectual context beyond the local materials
 
 Do not present this context dump to the author. Use it silently to inform the exploration.
 

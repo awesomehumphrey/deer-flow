@@ -147,7 +147,7 @@ Put everything you have in the appropriate folders. The more material the agent 
 
 These folders are automatically available inside DeerFlow's sandbox at `/mnt/ValuesWork/`.
 
-> **Note:** These personal materials are the *grounding* for the book, not the totality of its research. The agent will also conduct web research, search academic literature, and cite external works as needed. Your ValuesWork folder provides the personal foundation; the broader intellectual landscape is built on top of it.
+> **Note:** These personal materials are the *grounding* for the book, not the totality of its research. The agent uses the **`deep-research`** skill to conduct web research, search academic literature, and find external sources as needed. Your ValuesWork folder provides the personal foundation; the broader intellectual landscape is built on top of it.
 
 ### Phase 2: Ingest and Analyse the Research
 
@@ -168,7 +168,7 @@ The agent will:
 
 The agent will pause after inventorying files to confirm which ones to process. It will present a summary when finished.
 
-This is the foundation for everything that follows. The chapter structure, the evidence base, and the argument of the book all emerge from the actual research, not from guesses. The Research Digest will also identify evidence gaps, which the agent addresses through web research and external literature review in later phases.
+This is the foundation for everything that follows. The chapter structure, the evidence base, and the argument of the book all emerge from the actual research, not from guesses. The Research Digest will also identify evidence gaps, which the agent addresses using the **`deep-research`** skill in later phases.
 
 ### Phase 3: Interview
 
