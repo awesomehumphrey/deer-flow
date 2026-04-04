@@ -140,6 +140,9 @@ Evidence gaps:
   - [What new evidence would the book need to support the exploration's findings?]
   - [Suggested search terms or source types for filling gaps]
 
+Author input needed:
+  - [Does this exploration touch on the author's personal experience? Ask for relevant anecdotes, memories, or details that could ground the ideas in lived experience.]
+
 New questions:
   - [What new questions did this exploration raise?]
 ```

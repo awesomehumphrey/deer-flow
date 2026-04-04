@@ -42,6 +42,16 @@ Before writing, plan the evidence for this chapter:
 5. **Gaps:** What evidence is missing that the reader might expect? For gaps, use the **`deep-research`** skill to conduct web research and literature searches for external sources; the evidence base is not limited to materials the author has provided locally.
 6. **Bibliography check:** Verify every planned source has a BibTeX entry in `references.bib`. Add any missing entries now, before writing begins. See `Bibliography.md` for conventions.
 
+#### Author Input Check
+
+Before proceeding to composition, assess whether this chapter needs personal input from the author that is not yet in the Book Bible, Research Digest, or book-specific skill file:
+
+- **Opening scene:** Does the chapter plan call for a personal anecdote or scene? Are the details sufficient to write it vividly, or do you need specifics (who was there, what was said, what the room looked like)?
+- **Personal stories:** Does the chapter's argument benefit from the author's lived experience at any point? Check the book-specific skill's anecdotes list; if none fit, ask the author.
+- **Fact verification:** Does the chapter reference specific events from the author's life? Verify details before writing rather than guessing.
+
+**Pause:** If any of these need author input, ask now. Be specific: "Chapter 3 opens with your AIware presentation. I need details: what time of day was your talk? How did the audience react during the Q&A?" Do not proceed with thin or invented details.
+
 #### Rhetorical Figure Strategy
 
 Identify the moments where rhetorical figures will have maximum impact. Figures can be deployed in both analytical passages and narrative sections.
@@ -96,6 +106,8 @@ For sections with data, interviews, or research:
 ### Step 5: Prose Composition with Voice
 
 Write the actual prose following the Aesthetic Profile. This step integrates rhetorical figure execution, evidence integration, and layer awareness.
+
+**Mid-writing author queries:** If you encounter a moment during composition where a personal story, specific memory, or factual detail from the author's experience would strengthen the prose, pause and ask. Do not invent biographical details or fabricate anecdotes. See the Author Queries section in `SKILL.md` for guidance on when and how to ask.
 
 #### Sentence-Level Craft
 

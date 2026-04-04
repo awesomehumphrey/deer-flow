@@ -25,6 +25,22 @@ Route to the appropriate workflow based on the request.
 
 **Distinguishing WriteChapter from Revise:** WriteChapter is for initial composition — building a chapter from the Book Bible when no draft exists. Revise is for targeted changes to an existing draft, whether driven by critic feedback, revision briefs from UpdateFromResearch, new evidence, or author directives. If a revision escalates to a fundamental rewrite (e.g., the chapter's core argument is changing), switch to WriteChapter.
 
+## Author Queries
+
+Narrative non-fiction depends on the author's personal experience, memories, and knowledge. The Interview workflow is the primary extraction point, but it is not the only one. **Any workflow may pause to ask the author for input** when it encounters a need that only the author can fill.
+
+Pause and ask the author when:
+
+1. **A personal anecdote would strengthen a passage.** If a section is abstract, analytical, or lacking a human hook, and the author's experience might provide one, ask: "Do you have a personal experience related to [topic]? This section would benefit from a concrete story."
+2. **A fact needs verification.** If the text references a specific event from the author's life (a presentation, a conversation, a teaching moment), verify the details: "You mention the AIware presentation in South Korea. Was it the last talk of the session? Roughly how many people were in the room?"
+3. **A chapter opening needs a scene.** The best non-fiction chapters open with concrete moments. If the Book Bible specifies a personal opening but the details are thin, ask for them before writing.
+4. **A relationship or interaction needs specifics.** If the text discusses a collaboration, a disagreement, or a turning point in the author's research journey, ask for the human details that make it vivid.
+5. **The author's opinion or judgment is needed.** When the evidence supports multiple interpretations and the book needs the author to take a position, ask rather than assume.
+
+**How to ask:** Be specific. "Do you have any stories about X?" is too vague. "In your experience teaching the privacy policy task to students, did any student reaction surprise you? What did they say or do?" is concrete enough to get a useful answer.
+
+**When NOT to ask:** Do not pause for information that can be found in the Research Digest, the Book Bible, or through the `deep-research` skill. Only ask the author for things only the author knows: personal experiences, opinions, memories, and unpublished details.
+
 ## The Seven Narrative Layers
 
 Every chapter and the book as a whole is constructed across seven simultaneous layers. See `NarrativeLayers.md` for full definitions and mapping templates.

@@ -94,6 +94,8 @@ Change 2:
 
 **Ordering rule:** Apply structural changes before content changes, content changes before prose changes. This prevents doing detailed prose work on a passage that later gets moved or cut.
 
+**Author input check:** Review the change plan for any changes that need personal input from the author: a new anecdote to add, a biographical detail to verify, a judgment call on how to frame a personal experience. If any changes depend on information only the author has, pause and ask before applying. See the Author Queries section in `SKILL.md` for guidance.
+
 **Scope discipline:** If the change plan grows beyond 8-10 individual changes, consider whether this has become a rewrite rather than a revision. If so, recommend WriteChapter instead.
 
 ### Step 4: Apply Changes

@@ -399,14 +399,17 @@ Each cycle:
 
 ### Agent Pauses
 
-The agent is designed to pause at key decision points and ask for your confirmation:
+The agent is designed to pause at key decision points and ask for your input:
 
 - After inventorying research files (before processing)
 - After assessing the impact of new research on each chapter (before updating)
 - When contradictions are found between new evidence and existing content
 - When structural changes to the book are recommended
+- **When a chapter needs a personal anecdote, story, or memory** that is not already in the book-specific skill file or Research Digest
+- **When biographical details need verification** (dates, names, what happened at a specific event)
+- When a revision requires your judgment on how to handle competing interpretations
 
-This keeps you in control of the book's direction.
+The agent will not invent biographical details or fabricate personal stories. If it needs something only you know, it will ask. The more specific you are in your answers, the better the prose will be.
 
 ### Logs
 
