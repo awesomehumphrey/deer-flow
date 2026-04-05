@@ -129,23 +129,76 @@ The workflow has nine phases. The first time through, follow them in order (skip
 
 ### Phase 1: Gather Research Materials
 
-Before asking DeerFlow to do anything, populate the research folders:
+Before asking DeerFlow to do anything, populate the research folders. The more material the agent has, the better the book plan and chapters will be. You do not need everything on day one; you can add materials incrementally and re-run IngestResearch. But the richer the initial set, the stronger the first Book Bible.
+
+#### Folder structure
 
 ```
 ~/Documents/ValuesWork/
-  papers/       <- Your publications, OVIS lab papers, cited works (PDFs, .tex, .bib)
-  interviews/   <- Developer interviews, user study transcripts
+  papers/       <- Research publications (yours and others)
+  interviews/   <- Developer interviews, user study data
   notes/        <- Research notes, ideas, rough outlines
-  data/         <- Datasets, analysis results (CSV, Excel)
-  bio/          <- Your CV, biographical information
-  grants/       <- DECRA application, John's DP20, FLOSS ICSE proposal/report
-  highlights/   <- Reading highlights (Brian Christian, John Lennox, etc.)
-  drafts/       <- OUTPUT: DeerFlow writes chapter drafts here
+  data/         <- Datasets, analysis results
+  bio/          <- CV and biographical information
+  grants/       <- Grant applications and reports
+  highlights/   <- Reading highlights and annotations
+  drafts/       <- OUTPUT: DeerFlow writes chapter drafts here (leave empty)
 ```
 
-Put everything you have in the appropriate folders. The more material the agent has, the better the book plan and chapters will be.
-
 These folders are automatically available inside DeerFlow's sandbox at `/mnt/ValuesWork/`.
+
+#### What to gather: checklist
+
+Work through this list. Tick off what you have; skip what you don't. Items are grouped by priority.
+
+**Priority 1: Core research (gather these first)**
+
+- [ ] Your publications as PDFs or .tex files:
+  - "Automated detection, categorisation and developers' experience with violations of honesty in mobile apps" (Empirical SE, 2023)
+  - "A Vision for Value-Aligned AI-Driven Systems" (AIware 2025)
+  - "ChroniUXMag: A Persona-Driven Framework for Inclusive mHealth Requirements Engineering"
+  - Stack Overflow analysis of values violations
+  - Android API investigation linking values violations to security
+  - Any other publications relevant to the book's themes
+- [ ] BibTeX files (.bib) for your publications (if you have them; the agent can generate entries from PDFs if not)
+- [ ] Your DECRA application (PDF or Word)
+- [ ] John's DP20 grant application
+- [ ] FLOSS ICSE proposal and final report
+
+**Priority 2: Evidence and data**
+
+- [ ] Developer interview transcripts (text files, Word docs, or PDFs; if you only have audio, provide any notes or summaries you made)
+- [ ] User study data: transcripts, survey results, analysis summaries
+- [ ] Datasets and analysis results (CSV, Excel, or summary documents) from your empirical studies
+- [ ] OVIS lab papers by collaborators that are relevant to the book's argument (PDFs)
+
+**Priority 3: Context and framing**
+
+- [ ] Your CV or academic bio (helps the agent write about your research journey accurately)
+- [ ] Reading highlights and annotations from key books:
+  - Brian Christian, *The Alignment Problem* (Kindle highlights export, margin notes, or a summary of what struck you)
+  - John Lennox, *2084* (same)
+  - Any other books you want to reference or that shaped your thinking
+- [ ] Research notes, memos, or rough outlines you have written about the book's themes (any format)
+- [ ] Conference presentation slides (especially the AIware talk, which is an anecdote in the book)
+- [ ] Teaching materials related to the book's topics (e.g., the privacy policy task you give students)
+
+**Priority 4: Nice to have**
+
+- [ ] Key papers by other researchers that you consider essential reading for the book's argument (the agent can find many of these via `deep-research`, but providing them directly ensures they are ingested accurately)
+- [ ] Blog posts, essays, or public writing you have done on these topics
+- [ ] Any existing book outlines, chapter drafts, or proposal documents
+- [ ] Emails or messages that capture important conversations with collaborators (redact as needed)
+
+#### Supported formats
+
+The agent can read: PDF, plain text (.txt, .md), LaTeX (.tex), BibTeX (.bib), Word (.docx), CSV, Excel (.xlsx), and most common document formats. For reading highlights, export from Kindle or your reading app as text if possible; screenshots of annotations are harder to process.
+
+#### What you do NOT need to provide
+
+- **External academic literature.** The agent uses the `deep-research` skill to find and cite papers by other researchers. Your ValuesWork folder is for *your* materials and materials you specifically want to ground the book in.
+- **A finished outline.** The Interview and BuildBible workflows create the book plan from your research. Any rough outlines you have are useful input, but the agent will build the definitive structure.
+- **Perfect organisation.** Put files in roughly the right folders. The agent will inventory everything and ask you to confirm before processing.
 
 > **Note:** These personal materials are the *grounding* for the book, not the totality of its research. The agent uses the **`deep-research`** skill to conduct web research, search academic literature, and find external sources as needed. Your ValuesWork folder provides the personal foundation; the broader intellectual landscape is built on top of it.
 
