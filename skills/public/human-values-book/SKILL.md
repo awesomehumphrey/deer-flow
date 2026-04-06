@@ -35,7 +35,7 @@ These are real experiences to draw on for narrative hooks and chapter openings. 
 
 **This list should grow throughout the writing process.** When a chapter needs a personal story, anecdote, or specific memory that is not listed here, ask the author directly. Do not invent or embellish biographical details. The best anecdotes often emerge when the agent asks specific questions during WriteChapter or Revise, not only during the Interview phase. After the author provides a new anecdote, add it to this list for future reference.
 
-1. **RMIT terms and conditions**: Personal experience with RMIT's terms and conditions during recruitment. Link to relevant _Black Mirror_ episode as a cultural hook on how institutions embed values violations into legal language users never read.
+1. **RMIT terms and conditions**: Personal experience with RMIT's and Vervoe's terms and conditions during recruitment. Link to relevant _Black Mirror_ episode as a cultural hook on how institutions embed values violations into legal language users never read.
 
 2. **Student privacy policy task**: Giving students the task of developing software to flag issues in privacy policies. Use as an illustration of how values violations can be taught, detected, and made visible.
 
@@ -70,7 +70,7 @@ Your personal research materials are mounted at `/mnt/ValuesWork/`. This folder 
 This book uses a **blended aesthetic profile** (see `narrative-nonfiction/AestheticProfiles.md`):
 
 ```
-Profile: 60% Zuboff + 40% Christian
+Profile: 50% Zuboff + 50% Christian
 ```
 
 - **Zuboff (dominant):** Systematic institutional analysis with moral urgency. Long, architecturally complex sentences that mirror the systems described. Chapters build like legal briefs: evidence, analysis, implication.
