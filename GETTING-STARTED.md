@@ -104,12 +104,12 @@ Each mode adds capabilities on top of the previous one. The trade-off is speed v
 | **Flash** | Direct responses, no extended reasoning | Quick lookups: "What's in the drafts folder?" |
 | **Thinking** | Extended reasoning (chain-of-thought) | Conversational work: Interview, light Explore sessions |
 | **Pro** | Thinking + structured task tracking (todo lists) | Multi-step workflows: IngestResearch, BuildBible, WriteChapter, deep Explore, medium Revise |
-| **Ultra** | Pro + parallel sub-agents (delegates work) | Work spanning multiple chapters: UpdateFromResearch, heavy Revise across chapters |
+| **Ultra** | Pro + parallel sub-agents (delegates work) | Batch processing: IngestResearch (many documents), UpdateFromResearch, heavy Revise across chapters |
 
 **Why it matters:**
 
 - **Pro** gives the agent a todo list it can use to track progress through complex workflows. Without this (in Thinking mode), the agent may lose track of where it is in a 9-step process like WriteChapter.
-- **Ultra** lets the agent spawn parallel sub-agents to do work simultaneously. This is valuable when assessing the impact of new research across all chapters at once (UpdateFromResearch), but overkill for sequential work like writing a single chapter.
+- **Ultra** lets the agent spawn parallel sub-agents to do work simultaneously. This is valuable for ingesting a large research corpus (sub-agents read different documents in parallel), assessing the impact of new research across all chapters at once (UpdateFromResearch), and heavy cross-chapter revisions. Overkill for sequential work like writing a single chapter.
 - **Thinking** is enough for conversational workflows (Interview, quick explorations) where the agent does not need to track multi-step progress.
 
 Each phase below specifies which mode to use.
@@ -204,7 +204,7 @@ The agent can read: PDF, plain text (.txt, .md), LaTeX (.tex), BibTeX (.bib), Wo
 
 ### Phase 2: Ingest and Analyse the Research
 
-Start a **new chat** in DeerFlow. Select **Pro** mode and **Claude Opus 4.6**. (Pro because ingestion is a multi-step process that benefits from task tracking. Opus for careful reading. If you have a very large document set, Sonnet is faster.)
+Start a **new chat** in DeerFlow. Select **Ultra** mode and **Claude Opus 4.6**. (Ultra lets the agent spawn parallel sub-agents to read and analyse multiple documents simultaneously rather than processing them one by one. With 14+ papers, grants, and reading highlights, this is a significant speedup. Opus for careful reading. If you only have a handful of documents, Pro mode is sufficient.)
 
 Type:
 
